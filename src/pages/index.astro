@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { course } from '../data/course';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title={course.title} description={course.description}>
@@ -94,7 +96,7 @@ import { course } from '../data/course';
 				{course.resources.map((resource) => (
 					<a
 						class="resource-card"
-						href={resource.url}
+						href={resource.external ? resource.url : `${base}/${resource.url}`}
 						target={resource.external ? '_blank' : undefined}
 						rel={resource.external ? 'noreferrer' : undefined}
 						download={resource.kind === 'pdf' ? true : undefined}

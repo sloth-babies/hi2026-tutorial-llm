@@ -69,7 +69,7 @@ export const course = {
 			kind: 'pdf',
 			label: '講義資料（PDF）',
 			description: 'コース3の講義スライドをダウンロードできます。',
-			url: '/materials/hi2026-course3-slides.pdf',
+			url: 'materials/hi2026-course3-slides.pdf',
 		},
 	] satisfies CourseResource[],
 	instructors: [
