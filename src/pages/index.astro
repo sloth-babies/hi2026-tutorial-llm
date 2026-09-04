@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { course } from '../data/course';
+---
+
+<BaseLayout title={course.title} description={course.description}>
+	<header class="site-header">
+		<a class="brand" href="#top" aria-label="HI2026 コース3 トップへ戻る">
+			<span class="brand-mark" aria-hidden="true">HI</span>
+			<span>{course.code}</span>
+		</a>
+		<nav class="site-nav" aria-label="ページ内ナビゲーション">
+			<a href="#about">概要</a>
+			<a href="#learning">内容</a>
+			<a href="#resources">資料</a>
+			<a href="#lecturers">講師</a>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section class="hero" id="top" aria-labelledby="course-title">
+			<div>
+				<p class="eyebrow">{course.eventName} / {course.code}</p>
+				<h1 id="course-title">{course.title}</h1>
+				<p class="hero-lead">{course.description}</p>
+				<div class="hero-actions">
+					<a class="button" href={course.primaryResourceUrl} target="_blank" rel="noreferrer">
+						演習用Colabを開く <span class="button-arrow" aria-hidden="true">↗</span>
+					</a>
+					<a class="quiet-link" href="#about">講習会の概要を見る ↓</a>
+				</div>
+				<div class="hero-meta" aria-label="開催情報">
+					<div>
+						<span class="meta-label">Date</span>
+						<span class="meta-value">{course.date}</span>
+					</div>
+					<div>
+						<span class="meta-label">Time</span>
+						<span class="meta-value">{course.time}</span>
+					</div>
+					<div>
+						<span class="meta-label">Venue</span>
+						<span class="meta-value">{course.venue}</span>
+					</div>
+				</div>
+			</div>
+			<aside class="hero-index" aria-label="コースの位置づけ">
+				<span class="index-number">03</span>
+				<p class="index-copy">基礎から応用へ。<br />理論と演習を一つの流れで。</p>
+			</aside>
+		</section>
+
+		<section class="section split-section" id="about" aria-labelledby="about-title">
+			<p class="section-label">01 / About</p>
+			<div>
+				<h2 id="about-title">LLMを、<br />自分の課題に使える知識へ。</h2>
+				<p class="section-intro">
+					この講習会では、大規模言語モデル（LLM）の基本から、出力を改善するプロンプト設計、外部データを活用するRAG、モデルを適応させるLoRAまでを扱います。各パートで考え方と実践を行き来しながら、研究や実務での活用に必要な視点を身につけます。
+				</p>
+				<ul class="audience-list" aria-label="対象者">
+					{course.audience.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" id="learning" aria-labelledby="learning-title">
+			<div class="section-heading">
+				<div>
+					<p class="section-label">02 / Learning path</p>
+					<h2 id="learning-title">学習内容</h2>
+				</div>
+				<p class="section-note">当日の進行により内容や順番が変更になる場合があります。</p>
+			</div>
+			<ol class="syllabus">
+				{course.agenda.map((item) => (
+					<li class="syllabus-item">
+						<span class="syllabus-number">{item.label}</span>
+						<h3>{item.title}</h3>
+						<p>{item.detail}</p>
+					</li>
+				))}
+			</ol>
+		</section>
+
+		<section class="section" id="resources" aria-labelledby="resources-title">
+			<div class="section-heading">
+				<div>
+					<p class="section-label">03 / Resources</p>
+					<h2 id="resources-title">演習・資料</h2>
+				</div>
+				<p class="section-note">演習リンクは、準備ができたものから順次追加します。</p>
+			</div>
+			<div class="resource-grid">
+				{course.resources.map((resource) => (
+					<a
+						class="resource-card"
+						href={resource.url}
+						target={resource.external ? '_blank' : undefined}
+						rel={resource.external ? 'noreferrer' : undefined}
+						download={resource.kind === 'pdf' ? true : undefined}
+					>
+						<p class="card-kicker">{resource.kind === 'colab' ? 'Hands-on' : 'Reference'}</p>
+						<h3>{resource.label}</h3>
+						<p>{resource.description}</p>
+						<span class="resource-arrow" aria-hidden="true">↗</span>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<section class="section" id="lecturers" aria-labelledby="lecturers-title">
+			<div class="section-heading">
+				<div>
+					<p class="section-label">04 / Lecturers</p>
+					<h2 id="lecturers-title">講師</h2>
+				</div>
+			</div>
+			<div class="instructor-grid">
+				{course.instructors.map((instructor) => (
+					<article class="instructor-card">
+						<p class="card-kicker">Lecturer</p>
+						<h3 class="instructor-name">
+							{instructor.name}
+							<span>{instructor.romanizedName}</span>
+						</h3>
+						<p class="instructor-meta">{instructor.affiliation}<br />{instructor.expertise}</p>
+						<p>{instructor.bio}</p>
+						{instructor.homepage && (
+							<a class="homepage-link" href={instructor.homepage} target="_blank" rel="noreferrer">
+								ホームページを見る ↗
+							</a>
+						)}
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="section" id="event" aria-labelledby="event-title">
+			<div class="event-panel">
+				<div>
+					<p class="section-label">05 / Event</p>
+					<h2 id="event-title">{course.eventName}</h2>
+					<p class="section-intro">2026年9月16日（水）〜18日（金）／ {course.venue}</p>
+				</div>
+				<div class="event-links">
+					<a href={course.eventUrl} target="_blank" rel="noreferrer">シンポジウム概要 <span aria-hidden="true">↗</span></a>
+					<a href={course.lecturesUrl} target="_blank" rel="noreferrer">公式講習会ページ <span aria-hidden="true">↗</span></a>
+					<a href={course.scheduleUrl} target="_blank" rel="noreferrer">全体スケジュール <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<p>{course.code} / {course.eventName}</p>
+		<p><a href="#top">ページの先頭へ ↑</a></p>
+	</footer>
+</BaseLayout>
