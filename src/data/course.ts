@@ -24,6 +24,8 @@ export const course = {
 		'大規模言語モデルの基礎から、プロンプト設計、RAG、LoRAによるファインチューニングまでを、理論と演習を通して学ぶ講習会です。',
 	date: '2026年9月16日（水）',
 	time: '15:15–16:45',
+	startDate: '2026-09-16T15:15:00+09:00',
+	endDate: '2026-09-16T16:45:00+09:00',
 	venue: '岡山大学 津島キャンパス',
 	primaryResourceUrl: null,
 	eventUrl: 'https://jp.his.gr.jp/symposium/symposium2026/',
