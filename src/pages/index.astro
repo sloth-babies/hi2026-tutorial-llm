@@ -22,13 +22,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	<main id="main-content">
 		<section class="hero" id="top" aria-labelledby="course-title">
 			<div>
-				<p class="eyebrow">{course.eventName} / {course.code}</p>
+				<p class="eyebrow">{course.siteLabel}</p>
 				<h1 id="course-title">{course.title}</h1>
 				<p class="hero-lead">{course.description}</p>
+				<p class="site-notice">{course.siteNotice}</p>
 				<div class="hero-actions">
-					<a class="button" href={course.primaryResourceUrl} target="_blank" rel="noreferrer">
-						演習用Colabを開く <span class="button-arrow" aria-hidden="true">↗</span>
-					</a>
+					{course.primaryResourceUrl ? (
+						<a class="button" href={course.primaryResourceUrl} target="_blank" rel="noreferrer">
+							演習用Colabを開く <span class="button-arrow" aria-hidden="true">↗</span>
+						</a>
+					) : (
+						<span class="button button-disabled" aria-label="演習用Colabは準備中です">
+							演習用Colab <span class="button-status">TBA</span>
+						</span>
+					)}
 					<a class="quiet-link" href="#about">講習会の概要を見る ↓</a>
 				</div>
 				<div class="hero-meta" aria-label="開催情報">
@@ -93,20 +100,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<p class="section-note">演習リンクは、準備ができたものから順次追加します。</p>
 			</div>
 			<div class="resource-grid">
-				{course.resources.map((resource) => (
-					<a
-						class="resource-card"
-						href={resource.external ? resource.url : `${base}/${resource.url}`}
-						target={resource.external ? '_blank' : undefined}
-						rel={resource.external ? 'noreferrer' : undefined}
-						download={resource.kind === 'pdf' ? true : undefined}
-					>
-						<p class="card-kicker">{resource.kind === 'colab' ? 'Hands-on' : 'Reference'}</p>
-						<h3>{resource.label}</h3>
-						<p>{resource.description}</p>
-						<span class="resource-arrow" aria-hidden="true">↗</span>
-					</a>
-				))}
+				{course.resources.map((resource) =>
+					resource.url ? (
+						<a
+							class="resource-card"
+							href={resource.external ? resource.url : `${base}/${resource.url}`}
+							target={resource.external ? '_blank' : undefined}
+							rel={resource.external ? 'noreferrer' : undefined}
+							download={resource.kind === 'pdf' ? true : undefined}
+						>
+							<p class="card-kicker">{resource.kind === 'colab' ? 'Hands-on' : 'Reference'}</p>
+							<h3>{resource.label}</h3>
+							<p>{resource.description}</p>
+							<span class="resource-arrow" aria-hidden="true">↗</span>
+						</a>
+					) : (
+						<div class="resource-card resource-card-pending" aria-label={`${resource.label}は準備中です`}>
+							<p class="card-kicker">{resource.kind === 'colab' ? 'Hands-on' : 'Reference'}</p>
+							<h3>{resource.label}</h3>
+							<p>{resource.description}</p>
+							<span class="resource-status">TBA</span>
+						</div>
+					),
+				)}
 			</div>
 		</section>
 

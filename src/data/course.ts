@@ -1,8 +1,9 @@
 export type CourseResource = {
 	label: string;
 	description: string;
-	url: string;
+	url?: string;
 	kind: 'colab' | 'pdf';
+	status: 'available' | 'tba';
 	external?: boolean;
 };
 
@@ -16,7 +17,9 @@ export type Instructor = {
 };
 
 export const course = {
-	code: 'HI2026 / COURSE 03',
+	code: 'LLM WORKSHOP / COURSE 03',
+	siteLabel: '講師作成のコース3案内サイト',
+	siteNotice: '本ページは、コース3の講師有志が作成した案内・教材サイトです。',
 	eventName: 'ヒューマンインタフェースシンポジウム2026',
 	title: 'LLM活用入門から応用まで：プロンプト設計・LoRA・RAG',
 	description:
@@ -24,8 +27,7 @@ export const course = {
 	date: '2026年9月16日（水）',
 	time: '15:15–16:45',
 	venue: '岡山大学 津島キャンパス',
-	primaryResourceUrl:
-		'https://colab.research.google.com/drive/1XdL-mBGYtATHcvzvMvYze8zDf2mhveXD?usp=sharing',
+	primaryResourceUrl: null,
 	eventUrl: 'https://jp.his.gr.jp/symposium/symposium2026/',
 	scheduleUrl: 'https://jp.his.gr.jp/symposium/hi2026-schedule/',
 	lecturesUrl: 'https://jp.his.gr.jp/symposium/hi2026-lectures/',
@@ -62,14 +64,13 @@ export const course = {
 			kind: 'colab',
 			label: 'RAG演習用Colab',
 			description: '検索拡張生成の仕組みを、ノートブックで手を動かしながら確認します。',
-			url: 'https://colab.research.google.com/drive/1XdL-mBGYtATHcvzvMvYze8zDf2mhveXD?usp=sharing',
-			external: true,
+			status: 'tba',
 		},
 		{
 			kind: 'pdf',
 			label: '講義資料（PDF）',
 			description: 'コース3の講義スライドをダウンロードできます。',
-			url: 'materials/hi2026-course3-slides.pdf',
+			status: 'tba',
 		},
 	] satisfies CourseResource[],
 	instructors: [
