@@ -22,8 +22,8 @@
 | --- | --- | --- | --- |
 | 概要 | LLMの効果的な活用を、プロンプト設計、LoRA、RAGを通じて実践的に学ぶ | 公式講習会ページ | 掲載予定 |
 | 学習項目 | Introduction、プロンプト設計、RAG、ReAct、LoRA、まとめ | 添付PDFのアジェンダ | 掲載予定 |
-| RAG演習 | RAG Tutorial / RAG演習用Colab | 添付PDF | URL確認済み |
-| RAG Colab URL | https://colab.research.google.com/drive/1XdL-mBGYtATHcvzvMvYze8zDf2mhveXD?usp=sharing | 添付PDF | 掲載予定 |
+| RAG演習 | RAG Tutorial / RAG演習用Colab | 添付PDF | TBA表示。公開リンク保留 |
+| RAG Colab URL | URLは確定済みだが、ページ上のリンクは一旦非表示 | 添付PDF | TBA。後日再設定 |
 | 追加演習 | プロンプト設計・ReAct・LoRA等 | ユーザー提供予定 | 後日追加 |
 
 ## 講師情報
@@ -40,7 +40,7 @@
 
 | 項目 | 掲載方法 | 状態 |
 | --- | --- | --- |
-| 添付PDF「HI研究会.pdf」 | `public/materials/hi2026-course3-slides.pdf` として資料カードからリンク | 公開可。配置済み |
+| 添付PDF「HI研究会.pdf」 | 資料カードは一旦TBA。PDF本体は `public/materials/hi2026-course3-slides.pdf` に保持 | 公開リンク保留 |
 | PDFの内容 | コース3のスライド資料。47ページ | 添付PDF | 確認済み |
 | 参加者限定資料 | 公開ページにはリンクしない。公式マイページ等の案内に従う | 公式全体スケジュール | 注意事項 |
 
