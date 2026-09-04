@@ -31,11 +31,14 @@ URLが未確定の場合は、カードやボタンを表示せず、プレー�
 
 ### 資料PDF
 
-1. 公開用ファイル名を決める
-2. `public/materials/` に配置する
-3. `src/data/course.ts` の資料URLを更新する
-4. ブラウザでリンクが開くことを確認する
-5. `npm run build` を実行する
+現在の公開ファイルは `public/materials/hi2026-course3-slides.pdf`。
+
+新しい資料に差し替える場合:
+
+1. `public/materials/` に公開用ファイルを配置する
+2. `src/data/course.ts` の資料URLを更新する
+3. ブラウザまたは生成物でリンクが開くことを確認する
+4. `npm run build` を実行する
 
 ### 講師プロフィール
 
@@ -66,6 +69,20 @@ astro dev status
 astro dev logs
 astro dev stop
 ```
+
+この環境で `astro` コマンドが直接見つからない場合は、プロジェクトのローカルバイナリを使う。
+
+```sh
+npx astro dev --host 127.0.0.1
+```
+
+## 現在の実装ファイル
+
+- `src/pages/index.astro`: ページ構造
+- `src/layouts/BaseLayout.astro`: HTMLメタデータと共通レイアウト
+- `src/data/course.ts`: コース、演習、資料、講師の更新用データ
+- `src/styles/global.css`: デザイン tokens、レイアウト、レスポンシブCSS
+- `public/materials/hi2026-course3-slides.pdf`: 講義資料
 
 ## コミット方針
 

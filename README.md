@@ -17,10 +17,17 @@ Inside of this Astro project, you'll find:
 
 ```text
 /
+├── docs/
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── data/
+│   │   └── course.ts
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
 
