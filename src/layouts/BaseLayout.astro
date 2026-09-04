@@ -11,13 +11,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-theme="system">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#101827" />
+		<meta name="theme-color" content="#ffffff" data-theme-color />
+		<script is:inline>
+			(() => {
+			const themeStorageKey = 'hi2026-theme';
+			const validThemes = ['system', 'light', 'dark'];
+			let initialTheme = 'system';
+
+			try {
+				const storedTheme = localStorage.getItem(themeStorageKey);
+				if (validThemes.includes(storedTheme)) initialTheme = storedTheme;
+			} catch {
+				// Use the system preference when localStorage is unavailable.
+			}
+
+			document.documentElement.dataset.theme = initialTheme;
+			const initialIsDark = initialTheme === 'dark' ||
+				(initialTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			document.querySelector('[data-theme-color]')?.setAttribute('content', initialIsDark ? '#121516' : '#ffffff');
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 		<link rel="icon" href={`${base}/favicon.ico`} />
 		<title>{title} | HI2026 Course 03</title>

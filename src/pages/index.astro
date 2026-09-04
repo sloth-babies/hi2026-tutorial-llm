@@ -17,6 +17,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 			<a href="#resources">資料</a>
 			<a href="#lecturers">講師</a>
 		</nav>
+		<div class="theme-control" data-theme-control>
+			<button
+				class="theme-trigger"
+				type="button"
+				aria-label="表示テーマ"
+				aria-haspopup="menu"
+				aria-expanded="false"
+				data-theme-trigger
+			>
+				<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<circle cx="12" cy="12" r="7.25"></circle>
+					<path d="M12 4.75a7.25 7.25 0 0 1 0 14.5z"></path>
+				</svg>
+			</button>
+			<div class="theme-menu" role="menu" aria-label="表示テーマ" hidden data-theme-menu>
+				<button type="button" role="menuitemradio" aria-checked="false" data-theme-option="system">
+					<span>システム</span><span class="theme-option-dot" aria-hidden="true"></span>
+				</button>
+				<button type="button" role="menuitemradio" aria-checked="false" data-theme-option="light">
+					<span>ライト</span><span class="theme-option-dot" aria-hidden="true"></span>
+				</button>
+				<button type="button" role="menuitemradio" aria-checked="false" data-theme-option="dark">
+					<span>ダーク</span><span class="theme-option-dot" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
 	</header>
 
 	<main id="main-content">
@@ -173,4 +199,88 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 		<p>{course.code} / {course.eventName}</p>
 		<p><a href="#top">ページの先頭へ ↑</a></p>
 	</footer>
+
+	<script is:inline>
+		(() => {
+			const themeControl = document.querySelector('[data-theme-control]');
+			const themeTrigger = document.querySelector('[data-theme-trigger]');
+			const themeMenu = document.querySelector('[data-theme-menu]');
+			const themeOptions = [...document.querySelectorAll('[data-theme-option]')];
+			const themeRoot = document.documentElement;
+			const themeStorageKey = 'hi2026-theme';
+			const themeLabels = { system: 'システム', light: 'ライト', dark: 'ダーク' };
+			const darkThemeColor = '#121516';
+			const lightThemeColor = '#ffffff';
+			const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+			if (!(themeControl instanceof HTMLElement) || !(themeTrigger instanceof HTMLButtonElement) || !(themeMenu instanceof HTMLElement)) return;
+
+			const updateThemeColor = () => {
+				const isDark = themeRoot.dataset.theme === 'dark' ||
+					(themeRoot.dataset.theme === 'system' && colorSchemeQuery.matches);
+				document.querySelector('[data-theme-color]')?.setAttribute('content', isDark ? darkThemeColor : lightThemeColor);
+			};
+
+			const applyTheme = (theme, persist = true) => {
+				const selectedTheme = themeLabels[theme] ? theme : 'system';
+				themeRoot.dataset.theme = selectedTheme;
+				themeOptions.forEach((option) => {
+					const isSelected = option.dataset.themeOption === selectedTheme;
+					option.setAttribute('aria-checked', String(isSelected));
+					option.classList.toggle('is-selected', isSelected);
+				});
+				themeTrigger.setAttribute('aria-label', `表示テーマ: ${themeLabels[selectedTheme]}`);
+				if (persist) {
+					try {
+						localStorage.setItem(themeStorageKey, selectedTheme);
+					} catch {
+						// The theme still applies for the current visit.
+					}
+				}
+				updateThemeColor();
+			};
+
+			const closeMenu = (returnFocus = false) => {
+				themeMenu.hidden = true;
+				themeTrigger.setAttribute('aria-expanded', 'false');
+				if (returnFocus) themeTrigger.focus();
+			};
+
+			const openMenu = () => {
+				themeMenu.hidden = false;
+				themeTrigger.setAttribute('aria-expanded', 'true');
+				themeOptions.find((option) => option.getAttribute('aria-checked') === 'true')?.focus();
+			};
+
+			applyTheme(themeRoot.dataset.theme || 'system', false);
+			themeTrigger.addEventListener('click', () => {
+				if (themeMenu.hidden) openMenu();
+				else closeMenu();
+			});
+			themeOptions.forEach((option, index) => {
+				option.addEventListener('click', () => {
+					applyTheme(option.dataset.themeOption || 'system');
+					closeMenu(true);
+				});
+				option.addEventListener('keydown', (event) => {
+					if (event.key === 'Escape') {
+						event.preventDefault();
+						closeMenu(true);
+					} else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+						event.preventDefault();
+						const direction = event.key === 'ArrowDown' ? 1 : -1;
+						const nextIndex = (index + direction + themeOptions.length) % themeOptions.length;
+						themeOptions[nextIndex].focus();
+					}
+				});
+			});
+			document.addEventListener('click', (event) => {
+				if (event.target instanceof Node && !themeControl.contains(event.target)) closeMenu();
+			});
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && !themeMenu.hidden) closeMenu(true);
+			});
+			colorSchemeQuery.addEventListener?.('change', updateThemeColor);
+		})();
+	</script>
 </BaseLayout>
