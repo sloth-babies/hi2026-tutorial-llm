@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
 
 :root {
-	--ink: #101827;
-	--muted: #657083;
-	--line: #d8dde6;
-	--paper: #f6f8fb;
+	--ink: #17202b;
+	--muted: #687381;
+	--line: #dee2e6;
+	--paper: #ffffff;
 	--surface: #ffffff;
-	--accent: #4054c6;
-	--accent-deep: #29398f;
-	--serif: 'Shippori Mincho', 'Yu Mincho', YuMincho, serif;
+	--accent: #b85c2b;
+	--accent-deep: #8e421f;
+	--accent-wash: #f8ebdd;
+	--display: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
 }
@@ -100,10 +101,10 @@ h1, h2, h3, p { margin-top: 0; }
 h1 {
 	max-width: 780px;
 	margin-bottom: 1.7rem;
-	font-family: var(--serif);
+	font-family: var(--display);
 	font-size: clamp(2.5rem, 6vw, 5.6rem);
 	font-weight: 500;
-	letter-spacing: -0.055em;
+	letter-spacing: -0.045em;
 	line-height: 1.22;
 	text-wrap: balance;
 }
@@ -120,7 +121,7 @@ h1 {
 	align-items: center;
 	gap: 1rem;
 	padding: 0.95rem 1.3rem;
-	background: var(--ink);
+	background: var(--accent);
 	color: #fff;
 	font-size: 0.9rem;
 	font-weight: 600;
@@ -137,20 +138,20 @@ h1 {
 .meta-label { display: block; margin-bottom: 0.15rem; color: var(--muted); font-size: 0.68rem; }
 .meta-value { font-weight: 600; }
 
-.hero-index { position: relative; padding: 1.6rem 0 1.6rem 1.6rem; border-left: 1px solid var(--ink); }
-.hero-index::before, .hero-index::after { position: absolute; left: -4px; width: 7px; height: 7px; background: var(--ink); content: ''; }
+.hero-index { position: relative; padding: 1.6rem 0 1.6rem 1.6rem; border-left: 1px solid var(--accent); }
+.hero-index::before, .hero-index::after { position: absolute; left: -4px; width: 7px; height: 7px; background: var(--accent); content: ''; }
 .hero-index::before { top: 0; }
 .hero-index::after { bottom: 0; }
-.index-number { display: block; margin-bottom: 0.8rem; font-family: var(--mono); font-size: 3rem; line-height: 1; }
+.index-number { display: block; margin-bottom: 0.8rem; color: var(--accent); font-family: var(--mono); font-size: 3rem; line-height: 1; }
 .index-copy { margin-bottom: 0; color: var(--muted); font-size: 0.9rem; }
 
 .section { padding: clamp(4.5rem, 9vw, 8rem) 0; border-top: 1px solid var(--line); }
 .split-section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(2rem, 8vw, 8rem); }
 .section-label { padding-top: 0.4rem; }
-.section h2 { max-width: 740px; margin-bottom: 1.4rem; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1.35; }
+.section h2 { max-width: 740px; margin-bottom: 1.4rem; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.35; }
 .section-intro { max-width: 700px; margin-bottom: 2.2rem; color: var(--muted); }
 .audience-list { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
-.audience-list li { padding: 0.45rem 0.8rem; border: 1px solid var(--line); background: var(--surface); font-size: 0.85rem; }
+.audience-list li { padding: 0.45rem 0.8rem; border: 1px solid #ead4c2; background: var(--accent-wash); font-size: 0.85rem; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
 .section-heading h2 { margin-bottom: 0; }
 .section-note { max-width: 240px; margin-bottom: 0.5rem; color: var(--muted); font-size: 0.8rem; }
