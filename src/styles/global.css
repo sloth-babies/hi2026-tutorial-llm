@@ -9,9 +9,10 @@
 	--accent: #b85c2b;
 	--accent-deep: #8e421f;
 	--accent-wash: #f8ebdd;
-	--radius-sm: 10px;
-	--radius-md: 16px;
-	--radius-lg: 24px;
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 14px;
+	--panel: #f4efe9;
 	--display: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
@@ -85,10 +86,7 @@ a:focus-visible { outline: 3px solid #8c9cff; outline-offset: 5px; }
 .site-nav a:hover { color: var(--accent); }
 
 .hero {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) 280px;
-	gap: clamp(3rem, 8vw, 9rem);
-	align-items: end;
+	display: block;
 	padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 9vw, 7rem);
 }
 
@@ -143,10 +141,6 @@ h1 {
 .meta-label { display: block; margin-bottom: 0.15rem; color: var(--muted); font-size: 0.68rem; }
 .meta-value { font-weight: 600; }
 
-.hero-index { padding: 2rem; border: 1px solid #ead4c2; border-radius: var(--radius-lg); background: var(--accent-wash); }
-.index-number { display: block; margin-bottom: 0.8rem; color: var(--accent); font-family: var(--mono); font-size: 3rem; line-height: 1; }
-.index-copy { margin-bottom: 0; color: var(--muted); font-size: 0.9rem; }
-
 .section { padding: clamp(4.5rem, 9vw, 8rem) 0; border-top: 1px solid var(--line); }
 .split-section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(2rem, 8vw, 8rem); }
 .section-label { padding-top: 0.4rem; }
@@ -183,17 +177,16 @@ h1 {
 .instructor-meta { margin-bottom: 1.4rem; color: var(--accent-deep) !important; font-size: 0.85rem !important; font-weight: 600; }
 .homepage-link { font-size: 0.85rem; font-weight: 600; }
 
-.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius-lg); background: var(--ink); color: #fff; }
-.event-panel h2 { margin-bottom: 1rem; color: #fff; }
-.event-panel .section-intro { margin-bottom: 0; color: #bfc7d8; }
+.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border: 1px solid #e6d8ca; border-radius: var(--radius-lg); background: var(--panel); color: var(--ink); }
+.event-panel h2 { margin-bottom: 1rem; color: var(--ink); }
+.event-panel .section-intro { margin-bottom: 0; color: var(--muted); }
 .event-links { display: grid; gap: 0.8rem; min-width: 220px; }
-.event-links a { display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 0.65rem; border-bottom: 1px solid #445065; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
-.event-links a:hover { color: #aeb9ff; }
+.event-links a { display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 0.65rem; border-bottom: 1px solid #d8c8b8; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.event-links a:hover { color: var(--accent-deep); }
 .site-footer { display: flex; justify-content: space-between; gap: 2rem; padding: 2rem 0 3rem; color: var(--muted); font-size: 0.78rem; }
 .site-footer p { margin-bottom: 0; }
 
 @media (max-width: 900px) {
-	.hero { grid-template-columns: minmax(0, 1fr) 180px; gap: 3rem; }
 	.syllabus { grid-template-columns: repeat(3, 1fr); }
 	.syllabus-item:nth-child(3) { border-right: 0; }
 	.syllabus-item:nth-child(n + 4) { border-top: 1px solid var(--line); }
@@ -205,7 +198,6 @@ h1 {
 	.site-nav { display: none; }
 	.hero { display: block; padding: 4.5rem 0 3.5rem; }
 	h1 { font-size: clamp(2.45rem, 12vw, 4.5rem); }
-	.hero-index { margin-top: 3rem; }
 	.split-section { display: block; }
 	.section-label { margin-bottom: 1.8rem; }
 	.section-heading { display: block; }
