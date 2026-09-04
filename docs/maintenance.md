@@ -71,6 +71,13 @@ URLが未確定の場合は、カードやボタンを表示せず、プレー�
 - サイトURLを変更した場合は、`public/robots.txt` と `public/sitemap.xml` のURLも更新する
 - `npm run build` 後に `dist/index.html`、`dist/robots.txt`、`dist/sitemap.xml` を確認する
 
+## Lighthouseの更新・確認
+
+- 外部フォントを追加する場合は、初期表示をブロックしない構成と転送量を確認する
+- TBAなど非インタラクティブな表示も、文字と背景のコントラスト比4.5:1以上を目安にする
+- 表示テキストを持つリンクやボタンの`aria-label`は、表示文言を含める
+- デスクトップだけでなく、モバイル設定でもLighthouseを再実行する
+
 ## 確認コマンド
 
 ```sh

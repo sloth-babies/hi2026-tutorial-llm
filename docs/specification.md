@@ -173,6 +173,7 @@ Colabで演習を開始
 - 開催前・開催後の状態切り替え: データ更新のみで対応予定
 - GitHub Actionsによる自動公開: 実装済み
 - SEO基礎（canonical、OGP、Event構造化データ、robots、sitemap）: 実装済み
+- Lighthouse指摘（外部フォント、TBAコントラスト、ロゴaria-label）: 対応済み
 
 ## 11. 未確定事項
 
