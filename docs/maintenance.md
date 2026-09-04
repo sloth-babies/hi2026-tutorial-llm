@@ -83,6 +83,26 @@ npx astro dev --host 127.0.0.1
 - `src/data/course.ts`: コース、演習、資料、講師の更新用データ
 - `src/styles/global.css`: デザイン tokens、レイアウト、レスポンシブCSS
 - `public/materials/hi2026-course3-slides.pdf`: 講義資料
+- `.github/workflows/deploy.yml`: `main`へのpushでGitHub Pagesへ自動公開
+
+## GitHub Pagesへの公開
+
+公開先は `https://sloth-babies.github.io/hi2026-tutorial-llm/`。
+
+### 通常の更新
+
+1. `main`に変更をpushする
+2. GitHubのActionsタブで `Deploy to GitHub Pages` を確認する
+3. `build` が成功した後、`deploy` が成功することを確認する
+4. 公開URLを確認する
+
+### 初回設定
+
+リポジトリの Settings → Pages → Build and deployment → Source で `GitHub Actions` を選択する。Pagesのデプロイ環境はworkflowの `github-pages` を使用する。
+
+### URLパスに関する注意
+
+このサイトはプロジェクトサイトのため、Astroの `base` は `/hi2026-tutorial-llm`。faviconやPDFなどの内部アセットは `import.meta.env.BASE_URL` 経由で参照する。リポジトリ名を変更した場合は `astro.config.mjs`、workflow、内部アセットのリンクを確認する。
 
 ## コミット方針
 

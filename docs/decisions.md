@@ -49,3 +49,11 @@
 **判断**: 仕様・掲載情報・判断ログ・更新手順を先にリポジトリへ残す。
 
 **理由**: 新しい会話で再開した場合でも、目的・出典・保留事項・更新方法をすぐ確認できるようにする。
+
+## D-009: GitHub ActionsでGitHub Pagesへ公開する
+
+**判断**: `main`へのpushをトリガーにAstroをビルドし、GitHub Pagesへ自動デプロイする。
+
+**理由**: Astroはビルドが必要であり、生成済みの`dist`を専用ブランチへ手動管理するより、ソースと生成物を分離できるActions方式が適している。workflow_dispatchによる手動再実行も用意する。
+
+**公開先**: `https://sloth-babies.github.io/hi2026-tutorial-llm/`
