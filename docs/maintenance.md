@@ -54,6 +54,16 @@ URLが未確定の場合は、カードやボタンを表示せず、プレー�
 - 追加済みの演習・資料リンクを確認する
 - 公式サイト側の情報と日時・会場に不整合がないか確認する
 
+## 表示テーマの更新・確認
+
+- テーマの選択UIは`src/pages/index.astro`、テーマの初期適用と保存処理は`src/layouts/BaseLayout.astro`で管理する
+- テーマ選択UIは円形のアイコンボタンとフローティングメニューの組み合わせを維持する
+- 配色トークンとダークテーマの上書きは`src/styles/global.css`で管理する
+- テーマの選択肢は「システム」「ライト」「ダーク」の3つから増やさない
+- 手動選択の保存キーは`hi2026-theme`とし、保存値が不正な場合はシステム設定に戻す
+- ライト・ダーク・システム各状態で、ヘッダー、CTA、カード、リンク、フォーカス表示を確認する
+- OSのカラースキーム変更時は、「システム」選択中だけ表示が追従することを確認する
+
 ## 確認コマンド
 
 ```sh
@@ -82,6 +92,7 @@ npx astro dev --host 127.0.0.1
 - `src/layouts/BaseLayout.astro`: HTMLメタデータと共通レイアウト
 - `src/data/course.ts`: コース、演習、資料、講師の更新用データ
 - `src/styles/global.css`: デザイン tokens、レイアウト、レスポンシブCSS
+- `public/favicon.svg` / `public/favicon.ico`: コース専用favicon
 - `public/materials/hi2026-course3-slides.pdf`: 講義資料
 - `.github/workflows/deploy.yml`: `main`へのpushでGitHub Pagesへ自動公開
 
