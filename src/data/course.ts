@@ -17,9 +17,7 @@ export type Instructor = {
 };
 
 export const course = {
-	code: 'LLM WORKSHOP / COURSE 03',
-	siteLabel: '講師作成のコース3案内サイト',
-	siteNotice: '本ページは、コース3の講師有志が作成した案内・教材サイトです。',
+	code: 'HI2026 - COURSE 03',
 	eventName: 'ヒューマンインタフェースシンポジウム2026',
 	title: 'LLM活用入門から応用まで：プロンプト設計・LoRA・RAG',
 	description:

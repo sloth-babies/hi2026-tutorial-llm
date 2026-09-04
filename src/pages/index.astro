@@ -22,10 +22,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	<main id="main-content">
 		<section class="hero" id="top" aria-labelledby="course-title">
 			<div>
-				<p class="eyebrow">{course.siteLabel}</p>
+				<p class="eyebrow">{course.code}</p>
 				<h1 id="course-title">{course.title}</h1>
 				<p class="hero-lead">{course.description}</p>
-				<p class="site-notice">{course.siteNotice}</p>
 				<div class="hero-actions">
 					{course.primaryResourceUrl ? (
 						<a class="button" href={course.primaryResourceUrl} target="_blank" rel="noreferrer">
