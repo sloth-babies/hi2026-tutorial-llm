@@ -9,6 +9,9 @@
 	--accent: #b85c2b;
 	--accent-deep: #8e421f;
 	--accent-wash: #f8ebdd;
+	--radius-sm: 10px;
+	--radius-md: 16px;
+	--radius-lg: 24px;
 	--display: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
@@ -75,6 +78,7 @@ a:focus-visible { outline: 3px solid #8c9cff; outline-offset: 5px; }
 	color: white;
 	font-size: 0.72rem;
 	letter-spacing: -0.08em;
+	border-radius: var(--radius-sm);
 }
 .site-nav { display: flex; gap: 1.5rem; font-size: 0.85rem; font-weight: 600; }
 .site-nav a { text-decoration: none; }
@@ -104,7 +108,7 @@ h1 {
 	font-family: var(--display);
 	font-size: clamp(2.5rem, 6vw, 5.6rem);
 	font-weight: 500;
-	letter-spacing: -0.045em;
+	letter-spacing: -0.02em;
 	line-height: 1.22;
 	text-wrap: balance;
 }
@@ -126,6 +130,7 @@ h1 {
 	font-size: 0.9rem;
 	font-weight: 600;
 	text-decoration: none;
+	border-radius: var(--radius-sm);
 	transition: background 160ms ease, transform 160ms ease;
 }
 .button:hover { background: var(--accent-deep); transform: translateY(-2px); }
@@ -138,17 +143,14 @@ h1 {
 .meta-label { display: block; margin-bottom: 0.15rem; color: var(--muted); font-size: 0.68rem; }
 .meta-value { font-weight: 600; }
 
-.hero-index { position: relative; padding: 1.6rem 0 1.6rem 1.6rem; border-left: 1px solid var(--accent); }
-.hero-index::before, .hero-index::after { position: absolute; left: -4px; width: 7px; height: 7px; background: var(--accent); content: ''; }
-.hero-index::before { top: 0; }
-.hero-index::after { bottom: 0; }
+.hero-index { padding: 2rem; border: 1px solid #ead4c2; border-radius: var(--radius-lg); background: var(--accent-wash); }
 .index-number { display: block; margin-bottom: 0.8rem; color: var(--accent); font-family: var(--mono); font-size: 3rem; line-height: 1; }
 .index-copy { margin-bottom: 0; color: var(--muted); font-size: 0.9rem; }
 
 .section { padding: clamp(4.5rem, 9vw, 8rem) 0; border-top: 1px solid var(--line); }
 .split-section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(2rem, 8vw, 8rem); }
 .section-label { padding-top: 0.4rem; }
-.section h2 { max-width: 740px; margin-bottom: 1.4rem; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.35; }
+.section h2 { max-width: 740px; margin-bottom: 1.4rem; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.35; }
 .section-intro { max-width: 700px; margin-bottom: 2.2rem; color: var(--muted); }
 .audience-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .audience-list li { display: flex; gap: 1rem; align-items: flex-start; min-height: 5.5rem; padding: 1rem 1rem 1.1rem 0; border-bottom: 1px solid var(--line); font-size: 0.86rem; line-height: 1.65; }
@@ -167,7 +169,7 @@ h1 {
 .syllabus-item p { margin-bottom: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.8; }
 
 .resource-grid, .instructor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.resource-card, .instructor-card { position: relative; padding: 1.8rem; border: 1px solid var(--line); background: var(--surface); text-decoration: none; transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
+.resource-card, .instructor-card { position: relative; padding: 1.8rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); text-decoration: none; transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
 .resource-card:hover, .instructor-card:hover { border-color: var(--accent); box-shadow: 0 12px 30px rgba(16, 24, 39, 0.06); transform: translateY(-3px); }
 .resource-card h3, .instructor-card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
 .resource-card p, .instructor-card p { margin-bottom: 1.5rem; color: var(--muted); font-size: 0.9rem; }
@@ -181,7 +183,7 @@ h1 {
 .instructor-meta { margin-bottom: 1.4rem; color: var(--accent-deep) !important; font-size: 0.85rem !important; font-weight: 600; }
 .homepage-link { font-size: 0.85rem; font-weight: 600; }
 
-.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); background: var(--ink); color: #fff; }
+.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius-lg); background: var(--ink); color: #fff; }
 .event-panel h2 { margin-bottom: 1rem; color: #fff; }
 .event-panel .section-intro { margin-bottom: 0; color: #bfc7d8; }
 .event-links { display: grid; gap: 0.8rem; min-width: 220px; }
