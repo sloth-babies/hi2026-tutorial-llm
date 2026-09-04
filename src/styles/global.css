@@ -150,8 +150,10 @@ h1 {
 .section-label { padding-top: 0.4rem; }
 .section h2 { max-width: 740px; margin-bottom: 1.4rem; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.35; }
 .section-intro { max-width: 700px; margin-bottom: 2.2rem; color: var(--muted); }
-.audience-list { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
-.audience-list li { padding: 0.45rem 0.8rem; border: 1px solid #ead4c2; background: var(--accent-wash); font-size: 0.85rem; }
+.audience-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.audience-list li { display: flex; gap: 1rem; align-items: flex-start; min-height: 5.5rem; padding: 1rem 1rem 1.1rem 0; border-bottom: 1px solid var(--line); font-size: 0.86rem; line-height: 1.65; }
+.audience-list li + li { padding-left: 1.2rem; border-left: 1px solid var(--line); }
+.audience-number { flex: 0 0 auto; color: var(--accent); font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
 .section-heading h2 { margin-bottom: 0; }
 .section-note { max-width: 240px; margin-bottom: 0.5rem; color: var(--muted); font-size: 0.8rem; }
@@ -206,7 +208,8 @@ h1 {
 	.section-label { margin-bottom: 1.8rem; }
 	.section-heading { display: block; }
 	.section-note { margin-top: 1rem; }
-	.syllabus, .resource-grid, .instructor-grid, .event-panel { grid-template-columns: 1fr; }
+	.syllabus, .resource-grid, .instructor-grid, .event-panel, .audience-list { grid-template-columns: 1fr; }
+	.audience-list li, .audience-list li + li { min-height: auto; padding: 1rem 0; border-left: 0; }
 	.syllabus-item, .syllabus-item:not(:first-child) { min-height: auto; padding: 1.2rem 0 1.5rem; border-right: 0; border-bottom: 1px solid var(--line); }
 	.syllabus-item:last-child { border-bottom: 0; }
 	.syllabus-number { margin-bottom: 1.2rem; }
