@@ -64,6 +64,13 @@ URLが未確定の場合は、カードやボタンを表示せず、プレー�
 - ライト・ダーク・システム各状態で、ヘッダー、CTA、カード、リンク、フォーカス表示を確認する
 - OSのカラースキーム変更時は、「システム」選択中だけ表示が追従することを確認する
 
+## SEOの更新・確認
+
+- ページタイトル、description、canonical、OGPのURLは、公開URL変更時に確認する
+- 開催日時や会場を変更した場合は、`src/layouts/BaseLayout.astro` のEvent構造化データも確認する
+- サイトURLを変更した場合は、`public/robots.txt` と `public/sitemap.xml` のURLも更新する
+- `npm run build` 後に `dist/index.html`、`dist/robots.txt`、`dist/sitemap.xml` を確認する
+
 ## 確認コマンド
 
 ```sh
@@ -93,6 +100,8 @@ npx astro dev --host 127.0.0.1
 - `src/data/course.ts`: コース、演習、資料、講師の更新用データ
 - `src/styles/global.css`: デザイン tokens、レイアウト、レスポンシブCSS
 - `public/favicon.svg` / `public/favicon.ico`: コース専用favicon
+- `public/og-image.svg`: OGP共有用の静的画像
+- `public/robots.txt` / `public/sitemap.xml`: 検索エンジン向けファイル
 - `public/materials/hi2026-course3-slides.pdf`: 講義資料
 - `.github/workflows/deploy.yml`: `main`へのpushでGitHub Pagesへ自動公開
 
