@@ -130,8 +130,8 @@ a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.
 	place-items: center;
 	background: var(--ink);
 	color: var(--paper);
-	font-size: 0.72rem;
-	letter-spacing: -0.08em;
+	font-size: 0.58rem;
+	letter-spacing: -0.12em;
 	border-radius: var(--radius-sm);
 }
 .site-nav { display: flex; gap: 1.5rem; font-size: 0.85rem; font-weight: 600; }
