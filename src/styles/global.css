@@ -12,7 +12,6 @@
 	--radius-sm: 6px;
 	--radius-md: 10px;
 	--radius-lg: 14px;
-	--panel: #f4efe9;
 	--display: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 	--mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
@@ -177,7 +176,7 @@ h1 {
 .instructor-meta { margin-bottom: 1.4rem; color: var(--accent-deep) !important; font-size: 0.85rem !important; font-weight: 600; }
 .homepage-link { font-size: 0.85rem; font-weight: 600; }
 
-.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border: 1px solid #e6d8ca; border-radius: var(--radius-lg); background: var(--panel); color: var(--ink); }
+.event-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; padding: 0; color: var(--ink); }
 .event-panel h2 { margin-bottom: 1rem; color: var(--ink); }
 .event-panel .section-intro { margin-bottom: 0; color: var(--muted); }
 .event-links { display: grid; gap: 0.8rem; min-width: 220px; }
@@ -207,7 +206,7 @@ h1 {
 	.syllabus-item, .syllabus-item:not(:first-child) { min-height: auto; padding: 1.2rem 0 1.5rem; border-right: 0; border-bottom: 1px solid var(--line); }
 	.syllabus-item:last-child { border-bottom: 0; }
 	.syllabus-number { margin-bottom: 1.2rem; }
-	.event-panel { gap: 2rem; padding: 2rem 1.4rem; }
+	.event-panel { gap: 2rem; }
 	.site-footer { display: block; }
 	.site-footer p + p { margin-top: 0.5rem; }
 }
