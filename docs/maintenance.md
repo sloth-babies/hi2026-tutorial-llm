@@ -109,6 +109,7 @@ npx astro dev --host 127.0.0.1
 - `public/favicon.svg` / `public/favicon.ico`: コース専用favicon
 - `public/og-image.svg`: OGP共有用の静的画像
 - `public/robots.txt` / `public/sitemap.xml`: 検索エンジン向けファイル
+- `public/google0347985e4643fe12.html`: Google Search Console所有権確認ファイル
 - `public/materials/hi2026-course3-slides.pdf`: 講義資料
 - `.github/workflows/deploy.yml`: `main`へのpushでGitHub Pagesへ自動公開
 
@@ -130,6 +131,25 @@ npx astro dev --host 127.0.0.1
 ### URLパスに関する注意
 
 このサイトはプロジェクトサイトのため、Astroの `base` は `/hi2026-tutorial-llm`。faviconやPDFなどの内部アセットは `import.meta.env.BASE_URL` 経由で参照する。リポジトリ名を変更した場合は `astro.config.mjs`、workflow、内部アセットのリンクを確認する。
+
+## Google検索への登録
+
+GitHub Pagesへの公開後、Google Search ConsoleでURLプレフィックスプロパティを追加する。
+
+プロパティURL:
+
+`https://sloth-babies.github.io/hi2026-tutorial-llm/`
+
+所有権確認では、`public/google0347985e4643fe12.html` が公開URL配下で取得できることを確認してからHTMLファイル方式を完了する。プロパティはプロジェクトサイトのパスを含めて登録する。
+
+所有権確認後の手順:
+
+1. Search Consoleの「サイトマップ」で `https://sloth-babies.github.io/hi2026-tutorial-llm/sitemap.xml` を送信する
+2. URL検査でトップページの公開URLをテストする
+3. 問題がなければ「インデックス登録をリクエスト」を実行する
+4. 数日から数週間後にURL検査と `site:sloth-babies.github.io/hi2026-tutorial-llm/` 検索で掲載状況を確認する
+
+Google検索への掲載は保証されないため、インデックス登録の可否や除外理由はSearch Consoleのページのインデックス登録レポートで確認する。
 
 ## コミット方針
 
