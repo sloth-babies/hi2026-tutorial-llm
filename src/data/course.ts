@@ -5,6 +5,7 @@ export type CourseResource = {
 	kind: 'colab' | 'pdf';
 	status: 'available' | 'tba';
 	external?: boolean;
+	protected?: boolean;
 };
 
 export type Instructor = {
@@ -62,15 +63,29 @@ export const course = {
 	resources: [
 		{
 			kind: 'colab',
-			label: 'RAG演習用Colab',
+			label: 'RAGハンズオンColab',
 			description: '検索拡張生成の仕組みを、ノートブックで手を動かしながら確認します。',
-			status: 'tba',
+			url: 'https://colab.research.google.com/drive/1LGI9GfUb_leq3Q595z5W3FzK75p76e2R',
+			status: 'available',
+			external: true,
+			protected: true,
+		},
+		{
+			kind: 'colab',
+			label: 'LoRAハンズオンColab',
+			description: 'LoRAによるモデル適応を、ノートブックで実際に試しながら学びます。',
+			url: 'https://colab.research.google.com/drive/1YvcLZEqlwJskPRHE-p0anw16-2Y1h6mE',
+			status: 'available',
+			external: true,
+			protected: true,
 		},
 		{
 			kind: 'pdf',
 			label: '講義資料（PDF）',
 			description: 'コース3の講義スライドをダウンロードできます。',
-			status: 'tba',
+			url: 'materials/HI研究会_20260916.pdf',
+			status: 'available',
+			protected: true,
 		},
 	] satisfies CourseResource[],
 	instructors: [

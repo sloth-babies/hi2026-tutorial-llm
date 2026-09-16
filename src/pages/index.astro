@@ -90,9 +90,9 @@ const structuredData = [
 							演習用Colabを開く <span class="button-arrow" aria-hidden="true">↗</span>
 						</a>
 					) : (
-						<span class="button button-disabled" aria-label="演習用Colabは準備中です">
-							演習用Colab <span class="button-status">TBA</span>
-						</span>
+						<a class="button" href="#resources">
+							演習用Colabを表示 <span class="button-arrow" aria-hidden="true">↓</span>
+						</a>
 					)}
 					<a class="quiet-link" href="#about">講習会の概要を見る ↓</a>
 				</div>
@@ -156,11 +156,49 @@ const structuredData = [
 					<p class="section-label">03 / Resources</p>
 					<h2 id="resources-title">演習・資料</h2>
 				</div>
-				<p class="section-note">演習リンクは、準備ができたものから順次追加します。</p>
+				<p class="section-note">パスワード入力後に、RAGとLoRAの演習リンクを表示できます。</p>
+			</div>
+			<div class="resource-gate" data-resource-gate>
+				<div>
+					<p class="card-kicker">Private materials</p>
+					<h3>ハンズオン資料を表示</h3>
+					<p>パスワードを入力すると、RAG・LoRAのColabリンクと講義資料PDFが表示されます。</p>
+					<p class="resource-gate-note">このパスワードは画面上の表示を切り替えるためのものです。</p>
+				</div>
+				<form class="resource-gate-form" data-resource-gate-form>
+					<label for="resource-password">パスワード</label>
+					<div class="resource-gate-input-row">
+						<input
+							id="resource-password"
+							name="password"
+							type="password"
+							autocomplete="current-password"
+							placeholder="パスワードを入力"
+							required
+							data-resource-password
+						/>
+						<button class="button resource-gate-submit" type="submit">リンクを表示</button>
+					</div>
+					<p class="resource-gate-feedback" aria-live="polite" data-resource-gate-feedback></p>
+				</form>
 			</div>
 			<div class="resource-grid">
 				{course.resources.map((resource) =>
-					resource.url ? (
+					resource.protected && resource.url ? (
+						<div
+							class="resource-card resource-card-locked"
+							data-protected-resource
+							data-resource-url={resource.url}
+							data-resource-external={resource.external ? 'true' : undefined}
+							data-resource-download={resource.kind === 'pdf' ? 'true' : undefined}
+							aria-label={`${resource.label}はパスワード入力後に表示されます`}
+						>
+							<p class="card-kicker">Hands-on</p>
+							<h3>{resource.label}</h3>
+							<p>{resource.description}</p>
+							<span class="resource-status" data-resource-status>パスワードで表示</span>
+						</div>
+					) : resource.url ? (
 						<a
 							class="resource-card"
 							href={resource.external ? resource.url : `${base}/${resource.url}`}
@@ -314,6 +352,87 @@ const structuredData = [
 				if (event.key === 'Escape' && !themeMenu.hidden) closeMenu(true);
 			});
 			colorSchemeQuery.addEventListener?.('change', updateThemeColor);
+		})();
+	</script>
+
+	<script is:inline>
+		(() => {
+			const gate = document.querySelector('[data-resource-gate]');
+			const form = document.querySelector('[data-resource-gate-form]');
+			const input = document.querySelector('[data-resource-password]');
+			const feedback = document.querySelector('[data-resource-gate-feedback]');
+			const protectedResources = [...document.querySelectorAll('[data-protected-resource]')];
+			const resourcePassword = 'hi2026';
+
+			if (!(gate instanceof HTMLElement) || !(form instanceof HTMLFormElement) ||
+				!(input instanceof HTMLInputElement) || !(feedback instanceof HTMLElement)) return;
+
+			const unlockResources = () => {
+				protectedResources.forEach((card) => {
+					if (!(card instanceof HTMLElement) || !card.dataset.resourceUrl) return;
+					if (card.dataset.resourceDownload === 'true') {
+						const unlockedCard = document.createElement('div');
+						unlockedCard.className = 'resource-card resource-card-unlocked resource-card-with-actions';
+						unlockedCard.innerHTML = card.innerHTML;
+
+						const status = unlockedCard.querySelector('[data-resource-status]');
+						if (status instanceof HTMLElement) {
+							const actions = document.createElement('div');
+							actions.className = 'resource-actions';
+
+							const viewLink = document.createElement('a');
+							viewLink.href = card.dataset.resourceUrl;
+							viewLink.target = '_blank';
+							viewLink.rel = 'noreferrer';
+							viewLink.textContent = '新しいタブで表示 ↗';
+
+							const downloadLink = document.createElement('a');
+							downloadLink.href = card.dataset.resourceUrl;
+							downloadLink.download = '';
+							downloadLink.textContent = 'ダウンロード ↓';
+
+							actions.append(viewLink, downloadLink);
+							status.replaceWith(actions);
+						}
+
+						card.replaceWith(unlockedCard);
+						return;
+					}
+
+					const link = document.createElement('a');
+					link.className = 'resource-card resource-card-unlocked';
+					link.href = card.dataset.resourceUrl;
+					if (card.dataset.resourceExternal === 'true') {
+						link.target = '_blank';
+						link.rel = 'noreferrer';
+					}
+					link.innerHTML = card.innerHTML;
+
+					const status = link.querySelector('[data-resource-status]');
+					if (status instanceof HTMLElement) {
+						status.className = 'resource-arrow';
+						status.textContent = '↗';
+						status.removeAttribute('data-resource-status');
+					}
+
+					card.replaceWith(link);
+				});
+
+				gate.classList.add('resource-gate-unlocked');
+				form.innerHTML = '<p class="resource-gate-success">リンクを表示しました。</p>';
+			};
+
+			form.addEventListener('submit', (event) => {
+				event.preventDefault();
+				if (input.value === resourcePassword) {
+					feedback.textContent = '';
+					unlockResources();
+					return;
+				}
+
+				feedback.textContent = 'パスワードが正しくありません。';
+				input.select();
+			});
 		})();
 	</script>
 </BaseLayout>
