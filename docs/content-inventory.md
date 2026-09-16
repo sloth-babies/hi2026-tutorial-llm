@@ -23,7 +23,7 @@
 | 概要 | LLMの効果的な活用を、プロンプト設計、LoRA、RAGを通じて実践的に学ぶ | 公式講習会ページ | 掲載予定 |
 | 学習項目 | Introduction、プロンプト設計、RAG、ReAct、LoRA、まとめ | 添付PDFのアジェンダ | 掲載予定 |
 | RAG演習 | RAG Tutorial / RAGハンズオンColab | 添付PDF、ユーザー提供URL | パスワード入力後に表示 |
-| RAG Colab URL | https://colab.research.google.com/drive/1LGI9GfUb_leq3Q595z5W3FzK75p76e2R | ユーザー提供 | 掲載済み。画面上の表示をパスワードで切り替え |
+| RAG Colab URL | https://colab.research.google.com/drive/1XdL-mBGYtATHcvzvMvYze8zDf2mhveXD#scrollTo=26b8ef99 | ユーザー提供 | 掲載済み。画面上の表示をパスワードで切り替え |
 | LoRA演習 | LoRAハンズオンColab | ユーザー提供URL | パスワード入力後に表示 |
 | LoRA Colab URL | https://colab.research.google.com/drive/1YvcLZEqlwJskPRHE-p0anw16-2Y1h6mE | ユーザー提供 | 掲載済み。画面上の表示をパスワードで切り替え |
 | 追加演習 | プロンプト設計・ReAct等 | ユーザー提供予定 | 後日追加 |

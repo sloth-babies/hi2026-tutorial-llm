@@ -65,7 +65,7 @@ export const course = {
 			kind: 'colab',
 			label: 'RAGハンズオンColab',
 			description: '検索拡張生成の仕組みを、ノートブックで手を動かしながら確認します。',
-			url: 'https://colab.research.google.com/drive/1LGI9GfUb_leq3Q595z5W3FzK75p76e2R',
+			url: 'https://colab.research.google.com/drive/1XdL-mBGYtATHcvzvMvYze8zDf2mhveXD#scrollTo=26b8ef99',
 			status: 'available',
 			external: true,
 			protected: true,
